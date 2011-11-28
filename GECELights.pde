@@ -31,22 +31,22 @@
  *********************************************************************/
 #include <AnimationExecutor.h>
 #include <Color.h>
+#include <ColorCycle.h>
+#include <ColorCycleAnimator.h>
 #include <CppDefs.h>
 #include <RainbowAnimator.h>
+#include <StaticColorAnimator.h>
 #include <StringAnimator.h>
+#include <SyncAnimator.h>
 
-#include "ColorCycle.h"
-#include "ColorCycleAnimator.h"
 #include "FlipAnimator.h"
 #include "RunningWaveAnimator.h"
-#include "StaticColorAnimator.h"
-#include "SyncAnimator.h"
 
 using namespace ESoft::GECEWriter;
 using namespace ESoft::GECELights;
 
 const uint8_t TRACK_COUNT = 1;
-const uint8_t TRACK = 5;
+const uint8_t TRACK = 2;
 const uint8_t LIGHT_COUNT = 50;
 const uint8_t MAX_BRIGHTNESS = 0xCC;
 
@@ -60,7 +60,7 @@ void loop() {
   
   /*
   {
-    StepAnimator animator(3, LIGHT_COUNT, new ESoft::GECEWriter::StaticColorAnimator(MAX_BRIGHTNESS, Color::RED), 30);
+    StepAnimator animator(TRACK, LIGHT_COUNT, new ESoft::GECEWriter::StaticColorAnimator(MAX_BRIGHTNESS, Color::RED));
   
     TrackAnimator *list[] = { &animator };
     AnimationExecutor exec(1, list);
@@ -69,6 +69,7 @@ void loop() {
   }
   */
   
+  /*
   {
     MultiAnimator *multi = new MultiAnimator(3);
     multi->addAnimator(new RainbowAnimator(MAX_BRIGHTNESS));
@@ -82,6 +83,7 @@ void loop() {
     exec.animate();
     
   }
+  */
   
   {
     Color colors[] = { Color::RED, Color::YELLOW, Color::GREEN, Color::CYAN, Color::BLUE, Color::VIOLET, Color::BLACK };
@@ -94,7 +96,7 @@ void loop() {
     exec.animate();
 
   }
-
+  /*
   {  
     Color two[] = { Color::RED, Color::GREEN };
   
@@ -120,6 +122,7 @@ void loop() {
     AnimationExecutor exec(1, list);
     exec.animate();
   }
+  */
   
   delay(5000);
   

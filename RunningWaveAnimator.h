@@ -36,11 +36,10 @@
 #include <WProgram.h>
 
 #include <Color.h>
+#include <ColorCycle.h>
 #include <Light.h>
+#include <StepAnimator.h>
 #include <TrackAnimator.h>
-
-#include "ColorCycle.h"
-#include "StepAnimator.h"
 
 namespace ESoft {
   
@@ -52,7 +51,7 @@ namespace ESoft {
     template <class RUNNING, typename T = bool>
     class RunningWaveAnimator : public GECEWriter::TrackAnimator {
     public:
-      RunningWaveAnimator(uint8_t track, uint8_t lightCount, ColorCycle cycle,
+      RunningWaveAnimator(uint8_t track, uint8_t lightCount, GECEWriter::ColorCycle cycle,
             uint8_t brightness, uint8_t step, 
             const T &param1 = false, unsigned int param2 = 0,
             unsigned int delay = 0)
@@ -81,7 +80,7 @@ namespace ESoft {
       }
 
     private:
-      ColorCycle cycle_;
+      GECEWriter::ColorCycle cycle_;
       TrackAnimator *animator_;
       uint8_t brightness_, step_;
       const T &param1_;
